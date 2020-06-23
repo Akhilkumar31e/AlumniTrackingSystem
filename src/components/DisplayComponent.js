@@ -28,7 +28,7 @@ class Display extends Component{
                         <div className="container">
                             <div className="row">
                                <div className="col-12 col-sm-6 justify-content-center title">
-                                   <h1 className="display-4">Alumni Tracking System</h1>
+                                   <h2 className="display-4">Alumni Tracking System</h2>
                                </div>
                                <div className="col-12 col-sm-6 taglines">
                                    <div className="container">
