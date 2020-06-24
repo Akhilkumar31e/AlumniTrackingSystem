@@ -3,6 +3,7 @@ import React,{Component} from 'react';
 import Display from './DisplayComponent';
 import { Navbar, NavbarBrand,Nav,NavItem, Button, Modal, ModalHeader, ModalBody, FormGroup,Label, Input,Form, Row, Col} from 'reactstrap';
 import { Control, LocalForm, Errors } from 'react-redux-form';
+
 const required = (val) => val && val.length;
 const maxLength = (len) => (val) => !(val) || (val.length <= len);
 const minLength = (len) => (val) => (val) && (val.length >= len);
@@ -24,6 +25,7 @@ class Login extends Component{
     handleLogin(event){
         this.toggleLoginModal();
         alert("Username:" + this.username.value +"Password: "+ this.password.value+"You are logged in");
+        
         event.preventDefault();
     }
     handleRegister(values){
@@ -50,11 +52,11 @@ class Login extends Component{
                     </NavbarBrand>
                     <Nav className="ml-auto" navbar>
                         <NavItem>
-                            <Button className="bg-light" outline onClick={this.toggleLoginModal}>
-                                <span className="fa fa-sign-in fa-lg"></span> Log in
+                            <Button className="btn bg-light mr-3"  onClick={this.toggleLoginModal}>
+                                <span className="fa fa-sign-in fa-lg text-primary"></span> <span className="text-primary"> Log in</span>
                             </Button>
-                            <Button className="bg-light" outline onClick={this.toggleRegisterModal}>
-                                <span className="fa fa-registered fa-lg"></span> Register
+                            <Button className="btn bg-light mr-3"  onClick={this.toggleRegisterModal}>
+                                <span className="fa fa-user-plus fa-lg text-primary"></span> <span className="text-primary"> Sign Up!</span>
                             </Button>
                         </NavItem>
                         
