@@ -11,6 +11,7 @@ class Main extends Component{
                 <Switch>
                     <Route path="/login" component={Login} />
                     
+                    <Route exact path="/home" component={Home} />
                     <Redirect to="/login" />
                 </Switch>
                 <Footer />
