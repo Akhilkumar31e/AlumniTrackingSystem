@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-
+import { Redirect } from 'react-router-dom';
 import Display from './DisplayComponent';
 import { Navbar, NavbarBrand,Nav,NavItem, Button, Modal, ModalHeader, ModalBody, FormGroup,Label, Input,Form, Row, Col} from 'reactstrap';
 import { Control, LocalForm, Errors } from 'react-redux-form';
@@ -14,7 +14,8 @@ class Login extends Component{
 
         this.state= {
             isLoginModalOpen: false,
-            isRegisterModalOpen: false
+            isRegisterModalOpen: false,
+            loginSuccessful: false
         }
         this.handleLogin=this.handleLogin.bind(this);
         this.handleRegister=this.handleRegister.bind(this);
@@ -25,6 +26,10 @@ class Login extends Component{
         this.toggleLoginModal();
         alert("Username:" + this.username.value +"Password: "+ this.password.value+"You are logged in");
         event.preventDefault();
+        this.setState({
+            loginSuccessful: true
+        });
+        
     }
     handleRegister(values){
         this.toggleRegisterModal();
@@ -44,6 +49,7 @@ class Login extends Component{
     render(){
         return(
             <React.Fragment>
+                
                 <Navbar dark >
                     <NavbarBrand className="mr-auto" href="/React-First-Application/">
                            Alumni Tracking System
@@ -262,6 +268,7 @@ class Login extends Component{
                             </FormGroup>
                             <Button type="submit" value="submit" color="primary">Login</Button>
                         </Form>
+                       
                     </ModalBody>
                 </Modal>
                 <Display />
