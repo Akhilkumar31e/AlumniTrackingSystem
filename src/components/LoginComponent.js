@@ -3,6 +3,7 @@ import { Redirect } from 'react-router-dom';
 import Display from './DisplayComponent';
 import { Navbar, NavbarBrand,Nav,NavItem, Button, Modal, ModalHeader, ModalBody, FormGroup,Label, Input,Form, Row, Col} from 'reactstrap';
 import { Control, LocalForm, Errors } from 'react-redux-form';
+import axios from 'axios';
 
 const required = (val) => val && val.length;
 const maxLength = (len) => (val) => !(val) || (val.length <= len);
@@ -24,19 +25,51 @@ class Login extends Component{
         this.toggleRegisterModal=this.toggleRegisterModal.bind(this);
     }
     handleLogin(event){
-        this.toggleLoginModal();
-        alert("Username:" + this.username.value +"Password: "+ this.password.value+"You are logged in");
-        
         event.preventDefault();
-        this.setState({
-            loginSuccessful: true
+       
+        axios.post('/login',{},{
+            auth:{
+                username:this.username.value,
+                password:this.password.value
+            }
+        })
+        .then(response => {
+            localStorage.setItem('userId',this.username.value);
+            this.setState({
+                loginSuccessful:true
+            })
+            alert(response.data);
+            
+        })
+        .catch(err => {
+            alert(err.response.data);
         });
-        
     }
     handleRegister(values){
-        this.toggleRegisterModal();
-        console.log('Registration details are: ' + JSON.stringify(values));
-        alert('Registration details are: ' + JSON.stringify(values));
+       // this.toggleRegisterModal();
+        //console.log('Registration details are: ' + JSON.stringify(values));
+        //alert('Registration details are: ' + JSON.stringify(values));
+        const user=values;
+        const newUser = {
+                name:user.fullname,
+                rollnumber:user.collegerno,
+                branch:user.branch,
+                yearofpassing:user.passyear,
+                email:user.email,
+                mobile:user.mobile,
+                password:user.password
+        }
+        axios.post('/signup',newUser)
+        .then(res => {
+            localStorage.setItem('userId',user.collegerno);
+            alert('Registration Succesful ');
+            this.setState({
+                loginSuccessful:true
+            });
+        })
+        .catch(err => {
+            alert(err.response.data);
+        })
     }
     toggleLoginModal(){
         this.setState({
@@ -51,7 +84,7 @@ class Login extends Component{
     render(){
         return(
             <React.Fragment>
-                
+                {this.state.loginSuccessful && <Redirect to="/home" />}
                 <Navbar dark >
                     <NavbarBrand className="mr-auto" href="/React-First-Application/">
                            Alumni Tracking System
@@ -123,9 +156,10 @@ class Login extends Component{
                             <Row className="form-group">
                                 <Label htmlFor="branch" md={3}>Select your branch</Label>
                                 <Col md={4}>
-                                    <Control.select model=".branch" name="branch"
+                                    <Control.select model=".branch" name="branch" id="branch"
                                     className="form-control">
-                                        <option>CSE</option>
+                                        <option>Branch</option>
+                                        <option >CSE</option>
                                         <option>ECE</option>
                                         <option>IT</option>
                                         <option>Mechanical</option>
