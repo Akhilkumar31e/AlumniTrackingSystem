@@ -50,6 +50,17 @@
   color: white;
   
 }
+ .jumbotron{
+  margin:0px auto;
+  background: rgb(53, 65, 235) !important;
+  color: white;
+}
+.row-header {
+ 
+  padding: 0px 0px;
+  font-size: 150%;
+  transition: top 0.3s;
+ }
 .title{
   padding-top: 20%;
 }
@@ -61,6 +72,14 @@
   min-height: 100px;
   border-bottom: 1px ridge #88abf7;
 }
+.user-row{
+  
+  padding: 30px 30px 30px 30px;
+  min-height: 100px;
+  border-bottom: 1px ridge #88abf7;
+ 
+}
+
 
 .footer{
   background-color: #88abf7;

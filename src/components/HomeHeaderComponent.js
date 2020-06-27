@@ -54,13 +54,18 @@ export default class HomeHeader extends Component {
                     <Collapse isOpen={this.state.isNavOpen} navbar >
                         <span className="mr-auto" />
                         <Nav navbar>
+                             <NavItem>
+                                <NavLink className = "nav-link" to = "/browse">
+                                    <span className = "fa fa-search fa-lg"></span> Browse
+                                </NavLink>
+                            </NavItem>
                             <NavItem>
                                 <NavLink className = "nav-link" to = "/home">
                                     <span className = "fa fa-home fa-lg"></span> Home
                                 </NavLink>
                             </NavItem>
                             <NavItem>
-                                <NavLink className = "nav-link" to = "/home">
+                                <NavLink className = "nav-link" to = "/profile">
                                     <span className = "fa fa-user fa-lg"></span> {localStorage.getItem('userId')}
                                 </NavLink>
                             </NavItem>

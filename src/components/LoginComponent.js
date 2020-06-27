@@ -62,10 +62,18 @@ class Login extends Component{
         axios.post('/signup',newUser)
         .then(res => {
             localStorage.setItem('userId',user.collegerno);
-            alert('Registration Succesful ');
-            this.setState({
-                loginSuccessful:true
-            });
+            axios.post('/login',{},{
+                auth:{
+                    username:user.collegerno,
+                    password:user.password
+                }
+            })
+            .then(response => {
+                alert('Registration Succesful ');
+                this.setState({
+                    loginSuccessful:true
+                });
+            })
         })
         .catch(err => {
             alert(err.response.data);
