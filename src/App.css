@@ -61,6 +61,19 @@
   font-size: 150%;
   transition: top 0.3s;
  }
+ .row-display{
+  padding: 30px 30px 30px 30px;
+  text-align: left !important;
+}
+.job-style{
+  font-size: 80% !important;
+}
+.add-exp-button{
+  text-align: end;
+}
+.row-edu{
+  border-bottom: 1px ridge  rgb(55, 71, 82);
+}
 .title{
   padding-top: 20%;
 }
