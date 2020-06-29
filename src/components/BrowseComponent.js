@@ -3,7 +3,8 @@ import axios from 'axios';
 import HomeHeader from './HomeHeaderComponent';
 import Loading from './LoadingComponent';
 import {Jumbotron} from 'reactstrap';
-import { Button,Label, Row, Col} from 'reactstrap';
+
+import { Button, Label, Row, Col} from 'reactstrap';
 import { Control, LocalForm, Errors } from 'react-redux-form';
 import {Link} from 'react-router-dom';
 
@@ -18,7 +19,8 @@ function RenderUsers ({isLoading,userlist}) {
         );
     }
     else{
-        if(userlist.length ===0 ){
+
+        if(userlist.length === 0 ){
             return(
                 <h4>No users found</h4>
             );
