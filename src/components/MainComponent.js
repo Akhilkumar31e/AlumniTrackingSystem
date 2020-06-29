@@ -1,18 +1,49 @@
 import React,{Component} from 'react';
 import {Switch, Route , Redirect, withRouter} from 'react-router-dom';
+
 import Login from './LoginComponent';
 import Footer from './FooterComponent';
 import Home from './HomeComponent';
-
-
+import Browse from './BrowseComponent';
+import Profile from './ProfileComponent';
+import User from './UserComponent';
 class Main extends Component{
+    constructor(props){
+        super(props);
+    }
+    
     render(){
+        const PrivateRoute= ({component: Component,...rest}) => {
+            return(
+            <Route {...rest} render = {(props) => (
+                localStorage.getItem('userId')!=null
+                ? <Component {...props} />
+                : <Redirect  to="/login" />
+            )} />
+            )
+        }
+        const SelectedProfile = ({match}) => {
+            return(
+                <React.Fragment>
+                    <User id={match.params.userid} />
+                </React.Fragment>
+            );
+        }
         return(
+            
             <React.Fragment>
                 <Switch>
                     <Route path="/login" component={Login} />
+<<<<<<< HEAD
                     <Route exact path="/home" component={Home} />
                     <Redirect to="/login" />
+=======
+                    <PrivateRoute path="/profile" component={() => <Profile id={localStorage.getItem('userId')} />} />
+                    <PrivateRoute exact path="/home" component={Home} />
+                    <PrivateRoute exact path="/browse" component={() => <Browse id={localStorage.getItem('userId')}/>} />
+                    <PrivateRoute exact path="/browse/:userid" component={SelectedProfile} />
+                    <Redirect to="/home" />
+>>>>>>> 1304e1ea619214e3069314f6a35bece9e1ef62f4
                 </Switch>
                 <Footer />
             </React.Fragment>

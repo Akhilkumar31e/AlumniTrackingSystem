@@ -6,10 +6,10 @@ export default class Home extends Component {
 
     render() {
         return (
-            <>
+            <React.Fragment>
                 <HomeHeader />
                 <HomeBody />
-            </>
-        )
+            </React.Fragment>
+        );
     }
 };
