@@ -6,6 +6,7 @@ import ProfileHeaderComponent from './ProfileHeaderComponent';
 import {  Button, Modal, ModalHeader, ModalBody,Label, Row, Col} from 'reactstrap';
 import { Control, LocalForm, Errors } from 'react-redux-form';
 import RenderExp from './ExperienceComponent';
+import {NotificationContainer,NotificationManager} from 'react-notifications';
 const required = (val) => val && val.length;
 const maxLength = (len) => (val) => !(val) || (val.length <= len);
 const minLength = (len) => (val) => (val) && (val.length >= len);
@@ -58,7 +59,7 @@ class Profile extends Component {
         }
         axios.post('/users/'+this.props.id+'/experience',newExp)
         .then(response => {
-            alert('Successfully added experience,thanks');
+            NotificationManager.success('Success','Experience added:');
             this.setState({
                 experience:response.data,
                 isExpLoading:false
@@ -85,6 +86,7 @@ class Profile extends Component {
         return(
             <React.Fragment>
                  <HomeHeader />
+                
                 <RenderProfile isLoading= {this.state.isLoading} profileInfo = {this.state.profileInfo} addExperience={this.addExperience} />
                 <div className="container">
                     <div className="row ">
@@ -96,7 +98,9 @@ class Profile extends Component {
                     </div>
                     </div>
                 </div>
+                <NotificationContainer />
                 <RenderExp isLoading={this.state.isExpLoading} experience = {this.state.experience} />  
+                
                 <Modal isOpen={this.state.isExpModalOpen} toggle={this.toggleAddExperience}>
                     <ModalHeader toggle={this.toggleAddExperience}>
                         Add Experience
@@ -198,6 +202,9 @@ class Profile extends Component {
                         </LocalForm>
                     </ModalBody>
                 </Modal>
+                
+
+                
             </React.Fragment>
         );
     }
