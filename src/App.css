@@ -50,6 +50,30 @@
   color: white;
   
 }
+ .jumbotron{
+  margin:0px auto;
+  background: rgb(53, 65, 235) !important;
+  color: white;
+}
+.row-header {
+ 
+  padding: 0px 0px;
+  font-size: 150%;
+  transition: top 0.3s;
+ }
+ .row-display{
+  padding: 30px 30px 30px 30px;
+  text-align: left !important;
+}
+.job-style{
+  font-size: 80% !important;
+}
+.add-exp-button{
+  text-align: end;
+}
+.row-edu{
+  border-bottom: 1px ridge  rgb(55, 71, 82);
+}
 .title{
   padding-top: 20%;
 }
@@ -61,6 +85,14 @@
   min-height: 100px;
   border-bottom: 1px ridge #88abf7;
 }
+.user-row{
+  
+  padding: 30px 30px 30px 30px;
+  min-height: 100px;
+  border-bottom: 1px ridge #88abf7;
+ 
+}
+
 
 .footer{
   background-color: #88abf7;
