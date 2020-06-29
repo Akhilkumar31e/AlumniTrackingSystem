@@ -4,6 +4,9 @@ import Loading from './LoadingComponent';
 import HomeHeader from './HomeHeaderComponent';
 import ProfileHeaderComponent from './ProfileHeaderComponent';
 import { Button } from 'reactstrap';
+
+
+
 function RenderProfile({isLoading,profileInfo,addExperience}){
     if(isLoading){
         return(
@@ -47,13 +50,15 @@ function RenderProfile({isLoading,profileInfo,addExperience}){
                         </div>
                     </div>
                     <div >
-                            {profileInfo.experience.length!=0 ? experience : <h4>No experience added, Add Experience</h4>}
+                            {profileInfo.experience.length !== 0 ? experience : <h4>No experience added, Add Experience</h4>}
                     </div>
                 </div>
             </React.Fragment>
         );
     }
 }
+
+
 class Profile extends Component {
     constructor(props){
         super(props);
