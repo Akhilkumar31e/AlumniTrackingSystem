@@ -40,6 +40,7 @@ class RenderProfile extends Component{
         );
     }
 }
+}
 
 
 class Profile extends Component {
