@@ -2,7 +2,8 @@ import React,{Component} from 'react';
 import {Switch, Route , Redirect, withRouter} from 'react-router-dom';
 import Login from './LoginComponent';
 import Footer from './FooterComponent';
-import Display from './DisplayComponent';
+import Home from './HomeComponent';
+
 
 class Main extends Component{
     render(){
@@ -10,7 +11,6 @@ class Main extends Component{
             <React.Fragment>
                 <Switch>
                     <Route path="/login" component={Login} />
-                    
                     <Route exact path="/home" component={Home} />
                     <Redirect to="/login" />
                 </Switch>

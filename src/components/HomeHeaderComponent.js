@@ -18,6 +18,7 @@ export default class HomeHeader extends Component {
         })
     }
     render() {
+        console.log("Rendered");
         return (
             <Navbar dark expand="md">
                 <div className="container">
