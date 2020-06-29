@@ -5,6 +5,7 @@ import HomeHeader from './HomeHeaderComponent';
 import ProfileHeaderComponent from './ProfileHeaderComponent';
 import { Breadcrumb, BreadcrumbItem } from 'reactstrap';
 import {Link} from 'react-router-dom';
+import RenderExp  from './ExperienceComponent';
 
 function RenderProfile({isLoading,profileInfo}){
     if(isLoading){
@@ -27,7 +28,8 @@ class User extends Component {
 
         this.state = {
             profileInfo : null,
-            isLoading: true
+            isLoading: true,
+            experience :[]
         }
     }
     componentDidMount(){
@@ -35,7 +37,8 @@ class User extends Component {
         .then(res => {
             this.setState({
                 profileInfo: res.data,
-                isLoading:false
+                isLoading:false,
+                experience: res.data.experience
             });
         })
     }
@@ -50,6 +53,14 @@ class User extends Component {
                         <BreadcrumbItem active>{this.props.id}</BreadcrumbItem>
                 </Breadcrumb>
                 <RenderProfile isLoading= {this.state.isLoading} profileInfo = {this.state.profileInfo} />
+                <div className="container">
+                    <div className="row ">
+                    <div className="co1-12 col-sm-2">
+                        <h2 className="text-muted">Experience</h2>
+                    </div>
+                    </div>
+                    </div>
+                <RenderExp isLoading={this.state.isLoading} experience = {this.state.experience} />
             </React.Fragment>
         );
     }
