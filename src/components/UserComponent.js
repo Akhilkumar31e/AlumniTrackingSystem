@@ -22,6 +22,7 @@ function RenderProfile({isLoading,profileInfo}){
         );
     }
 }
+
 class User extends Component {
     constructor(props){
         super(props);

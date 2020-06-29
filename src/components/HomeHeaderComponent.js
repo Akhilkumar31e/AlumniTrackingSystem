@@ -41,6 +41,7 @@ export default class HomeHeader extends Component {
         });
     }
     render() {
+        console.log("Rendered");
         return (
             <React.Fragment>
                 {this.state.isLoggedOut && <Redirect to="/login" />}

@@ -3,6 +3,7 @@ import axios from 'axios';
 import HomeHeader from './HomeHeaderComponent';
 import Loading from './LoadingComponent';
 import {Jumbotron} from 'reactstrap';
+
 import { Button, Label, Row, Col} from 'reactstrap';
 import { Control, LocalForm, Errors } from 'react-redux-form';
 import {Link} from 'react-router-dom';
@@ -18,6 +19,7 @@ function RenderUsers ({isLoading,userlist}) {
         );
     }
     else{
+
         if(userlist.length === 0 ){
             return(
                 <h4>No users found</h4>
@@ -31,7 +33,7 @@ function RenderUsers ({isLoading,userlist}) {
                             <div className="row user-row">
                                 <div className="col-12 col-sm-4">
                                     <h5>
-                                    {localStorage.getItem('userId')===user.rollnumber && <span className="badge badge-pill badge-danger"> ME</span>}
+                                        {localStorage.getItem('userId') === user.rollnumber && <span className="badge badge-pill badge-danger"> ME</span>}
                                         <span className="fa fa-user fa-lg"> {user.name}</span>
                                         <span className="badge badge-pill badge-primary"> {user.branch}</span>
                                     </h5>
