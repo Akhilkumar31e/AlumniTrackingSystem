@@ -3,6 +3,7 @@ import axios from 'axios';
 import Loading from './LoadingComponent';
 import HomeHeader from './HomeHeaderComponent';
 import ProfileHeaderComponent from './ProfileHeaderComponent';
+
 import {  Button, Modal, ModalHeader, ModalBody,Label, Row, Col} from 'reactstrap';
 import { Control, LocalForm, Errors } from 'react-redux-form';
 import RenderExp from './ExperienceComponent';
@@ -20,14 +21,25 @@ class RenderProfile extends Component{
         console.log(this.props.profileInfo);
         return(
             <React.Fragment>
-                <ProfileHeaderComponent name={this.props.profileInfo.name} batch={this.props.profileInfo.yearofpassing}/>
-               
+                <ProfileHeaderComponent name={profileInfo.name} batch={profileInfo.yearofpassing}/>
+                <div className="container">
+                    <div className="row ">
+                        <div className="co1-12 col-sm-2">
+                            <h2 className="text-muted">Experience</h2>
+                        </div>
+                        <div className="col-12 col-sm-8 add-exp-button">
+                            <Button onclick={addExperience} className="btn bg-primary"><span className="fa fa-plus"></span> Add experience</Button>
+                        </div>
+                    </div>
+                    <div >
+                            {profileInfo.experience.length !== 0 ? experience : <h4>No experience added, Add Experience</h4>}
+                    </div>
+                </div>
             </React.Fragment>
         );
     }
 }
-    
-}
+
 
 class Profile extends Component {
     constructor(props){

@@ -7,6 +7,8 @@ import Home from './HomeComponent';
 import Browse from './BrowseComponent';
 import Profile from './ProfileComponent';
 import User from './UserComponent';
+
+
 class Main extends Component{
     render(){
         const PrivateRoute= ({component: Component,...rest}) => {
